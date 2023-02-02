@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Application</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Application Form</h1>
+        </div>
+        <form class="formName" id="formName" method="post" action="" autocomplete="off">
+            <div class="form">
+                <label>Name</label>
+                <input type="text" name="fname" id="fname" >
+    
+            </div>
+            <div class="form">
+                <label>phone</label>
+                <input type="tel" name="phone" id="phone" placeholder="[1234-56-4567]" >
+                
+            </div>
+            <div class="form">
+                <label>Date Of Birth</label>
+                <input type="date" name="dob" id="dob">
+            
+            </div>
+            <div class="form">
+                <label>Address</label>
+                <input type="textarea" name="address" id="address" rows="5">
+                
+            </div>
+            <div class="form">
+                <label>email</label>
+                <input type="email" name="email" id="email">
+                
+            </div>
+            <div class="form">
+                <label>Profile Image</label>
+                <input type="file"accept="image/*" onchange="loadFile(event)">
+                <p><img id="output" width="200"/></p>
+            
+            </div>
+            <div class="form">
+                <label>Maths</label>
+                <input type="number" name="maths" id="maths" min="35" max="100">
+                
+            </div>
+            <div class="form">
+                <label>Computer Science</label>
+                <input type="number" name="cs" id="cs" min="35" max="100">
+                
+            </div>
+            <div class="form">
+                <label>Data Science</label>
+                <input type="number" name="ds" id="ds" min="35" max="100" >
+                
+            </div>
+            <button onclick="myFunction()">Submit Form</button>
+        </form>
+       
+    </div>
+    
+  
+    <script>
+        $(document).ready(function(){
+            $.validator.setDefaults({
+                submitHandler : function(){
+                    var x = confirm("Are you sure want to submit the form?");
+                    if (x == true){
+                        alert("Yeah!Form submitted Successfully :-)")
+                    }
+                    else{
+                        alert("Oops...Something went wrong.Check again....")
+                    }
+                }
+            });
+            $("#formName").validate({
+				rules:{
+					fame: {
+                        required:true,
+                        min:3,
+                        max:100
+                    },
+                    phone:{
+                        required:true,
+                        minlength:10,
+                        maxlength:10
+                    },
+                    dob:"required",
+                    address:"required",
+                    email:{
+                        required:true,
+                        email:true
+                    },
+                    output:{
+                        required:true
+                    },
+                    maths:{
+                        required:true,
+                        min:35,
+                        max:100
+                    },
+                    cs:{
+                        required:true,
+                        min:35,
+                        max:100
+                    },
+                    ds:{
+                        required:true,
+                        min:35,
+                        max:100
+                    }
+				},
+				messages:{
+					fname:"Please Enter Your Name",
+                    phone:{
+                        required:"Please Enter Your phone No",
+                        minlength:"Phone Number should be 10 digits"
+                    },
+                    dob:"Enter your Date of Birth",
+                    address:"Enter your address",
+                    email:{
+                        required:"Please Enter Your Email",
+                        email:"Enter valid Email id"
+                    },
+                    output:{
+                        required:"Profile image is required",
+                    },
+                    maths:{
+                        required:"Maths mark is required",
+                        min:"Mark Should be atleast 35",
+                        max:"Mark should be less than 100"
+                    },
+                    cs:{
+                        required:"Computer Science Mark is required",
+                        min:"Mark Should be  atleast 35",
+                        max:"Mark should be less than 100"
+                    },
+                    ds:{
+                        required:"Data science Mark is required",
+                        min:"Mark Should be atleast 35",
+                        max:"Mark should be less than 100"
+                    }
+				},
+            });
+
+        });
+           
+			
+            
+
+
+        
+        </script>
+    
+</body>
+</html>
